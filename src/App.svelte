@@ -53,13 +53,13 @@
 
 </section>
 
-<!-- {#if products.length === 0} -->
-  <!-- <p>No products were added yet!</p> -->
-<!-- {:else} -->
+{#if products.length === 0}
+  <p>No products were added yet!</p>
+{:else}
   {#each products as product}
     <Product
       productTitle={product.title}
       productPrice={product.price}
       productDescription={product.description} />
   {/each}
-<!-- {/if} -->
+{/if}
