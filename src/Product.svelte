@@ -1,9 +1,16 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import Button from "./Button.svelte";
 
   export let productTitle;
   export let productDescription;
   export let productPrice;
+
+  const dispatch =createEventDispatcher();
+
+  function addToCart() {
+    dispatch('addcart', productTitle);
+  }
 </script>
 
 <style>
@@ -35,5 +42,5 @@
   <h1>{productTitle}</h1>
   <h2>{productPrice}</h2>
   <p>{productDescription}</p>
-  <Button>Add to Cart</Button>
+  <Button on:click={addToCart}>Add to Cart</Button>
 </div>
