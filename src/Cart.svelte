@@ -1,5 +1,9 @@
 <script>
   export let items;
+
+  $: cartTotal = items.reduce((sum, curValue) => {
+    return sum + curValue.price;
+  }, 0);
 </script>
 
 <style>
@@ -21,10 +25,14 @@
   }
 </style>
 
-<ul>
-  {#each items as item}
-    <li>{item.title} - {item.price}</li>
-  {/each}
-</ul>
+{#if items.length === 0}
+  <p>No items in cart yet.</p>
+{:else}
+  <ul>
+    {#each items as item}
+      <li>{item.title} - ${item.price}</li>
+    {/each}
+  </ul>
 
-<h1>TOTAL: $...</h1>
+  <h1>TOTAL: ${cartTotal}</h1>
+{/if}
